@@ -1,6 +1,48 @@
 import React from 'react';
+import axios from 'axios';
+import Chart from 'chart.js';
+
+
 
 function HomePage() {
+
+    var dataSource = {
+        datasets: [{
+            data: [],
+            backgroundColor: [
+                '#ffcd56',
+                '#ff6384',
+                '#36a2eb',
+                '#fd6b19',
+                'green',
+                'purple',
+                'grey'
+            ]
+        }
+    ],
+    labels: []
+    
+    };
+    function createChart(){
+        let ctx = document.getElementById("myChart");
+        let myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: dataSource
+      });
+      }
+      function getBudget() {
+        axios.get('http://localhost:3000/budget')
+        .then(function(res) {
+            console.log(res.data);
+            for (let i = 0; i < res.data.budget.myBudget.length; i++){
+                dataSource.datasets[0].data[i] = res.data.budget.myBudget[i].budget;
+                dataSource.labels[i] = res.data.budget.myBudget[i].title;
+            }
+    
+        createChart();
+        });
+      }
+
   return (
     <main className="container center">
 
@@ -63,14 +105,17 @@ function HomePage() {
                     Also, they to live happier lives... since they expend without guilt or fear... 
                     because they know it is all good and accounted for.
                 </p>
-            </div>
-    
+            </div>   
+
             <div className="text-box">
-                <h1>Chart</h1>
-                <p>
-                    <canvas id="myChart" width="400" height="400"></canvas>
-                </p>
-            </div>
+          <h1>Chart</h1>
+          <div>
+            <div>
+            {getBudget()}
+             </div>
+             <canvas id="myChart" width="400" height="400"></canvas>
+          </div>
+        </div>
 
         </div>
 
