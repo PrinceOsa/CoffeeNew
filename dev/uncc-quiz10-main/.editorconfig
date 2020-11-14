@@ -1,0 +1,70 @@
+root = true
+
+# All Files
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+# Most of the standard properties are supported
+indent_size=2
+max_line_length=100
+# Visual Studio Solution Files
+[*.sln]
+indent_style = tab
+
+# Visual Studio XML Project Files
+[*.{csproj,vbproj,vcxproj.filters,proj,projitems,shproj}]
+indent_size = 2
+
+# XML Configuration Files
+[*.{xml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct}]
+indent_size = 2
+
+# JSON Files
+[*.{json,json5,webmanifest}]
+indent_size = 2
+
+# YAML Files
+[*.{yml,yaml}]
+indent_size = 2
+
+# Markdown Files
+[*.md]
+trim_trailing_whitespace = false
+
+# Web Files
+[*.{htm,html,js,jsm,ts,tsx,css,sass,scss,less,svg,vue}]
+indent_size = 2
+
+# Batch Files
+[*.{cmd,bat}]
+end_of_line = crlf
+
+# Bash Files
+[*.sh]
+end_of_line = lf
+
+# Makefiles
+[Makefile]
+indent_style = tab
+
+# Most frequently used .NET-coding-convention properties are supported
+csharp_space_between_parentheses=expressions, type_casts, control_flow_statements
+csharp_style_var_for_built_in_types=true
+
+# dotnet_diagnostic rules are supported
+dotnet_diagnostic.CS1058.severity = hint
+
+# ReSharper custom properties for code formatting styles
+resharper_csharp_brace_style=next_line
+resharper_csharp_blank_lines_around_invocable=2
+
+# ReSharper custom properties for code syntax styles
+csharp_default_private_modifier=explicit
+braces_for_ifelse=not_required
+
+# ReSharper custom properties for code inspections
+resharper_possible_null_reference_exception_highlighting=error
+resharper_replace_with_string_is_null_or_empty_highlighting=none
